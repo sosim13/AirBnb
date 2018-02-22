@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Created by http://cafe.naver.com/citrineframework
+	You can freely copy, distribute, modify for commercial or non-commercial purposes.
+-->
+<MOML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.applusform.com/xsd/moml_ui.xsd" version="1.1.1">
+
+	<FUNCTION id="signUpMove">
+		<CMD condition="userVariable.signUpPageValue == 'false'" cmd="userVariable.signUpPageValue = 'true', animation.show('backWindow', 'fade', '', 500, ''), animation.move('SignupPage', 0, 1230, 'easeOut5|backOut', 500, '')"
+			elseCmd="userVariable.signUpPageValue = 'false', animation.hide('backWindow', 'fade', '', 500, ''), animation.move('SignupPage', 0, -1230, 'easeOut3', 500, '')" />
+	</FUNCTION>
+
+	<FUNCTION id="logInMove">
+		<CMD condition="userVariable.logInPageValue == 'false'" cmd="userVariable.logInPageValue = 'true', animation.show('backWindow', 'fade', '', 500, ''), animation.move('LoginPage', 0, 1230, 'easeOut5|backOut', 500, '')"
+			elseCmd="userVariable.logInPageValue = 'false', animation.hide('backWindow', 'fade', '', 500, ''), animation.move('LoginPage', 0, -1230, 'easeOut3', 500, '')" />
+	</FUNCTION>
+
+	<CMD cmd="userVariable.signUpPageValue  = 'false'" />
+	<CMD cmd="userVariable.logInPageValue  = 'false'" />
+
+	<UILAYOUT portrait="720,1230" landscape="720,1230">
+		<WINDOW id="mainPage" layout="0,0,720,1230" defaultImg="res/ib_sell.jpg">
+			<IMAGE layout="128,270,133,143" defaultImg="res/logo.png" />
+			<LABEL layout="277,270,300,143" text="airbnb" fontSize="150" fontFace="res/circular_bold.otf" textAlign="center" fontStyle="bold" textColor="#ffffff" />
+			<BUTTON layout="30,644,660,96" defaultImg="res/facebook.png" onClick="device.toastPopup('facebook')" />
+			<BUTTON layout="30,760,660,96" defaultImg="res/google.png" onClick="device.toastPopup('Google')" />
+			<STYLEBUTTON layout="30,876,326,97" shape="roundRect(10)" text="Sign Up" fontFace="res/circular_book.otf" fontSize="40" textAlign="center" textColor="#ffffff" borderStyle="solid:2|#ffffff"
+				defaultImg="#00ffffff" onClick="function.signUpMove" />
+			<STYLEBUTTON layout="364,876,326,97" shape="roundRect(10)" text="Log In" fontFace="res/circular_book.otf" fontSize="40" textAlign="center" textColor="#ffffff" borderStyle="solid:2|#ffffff"
+				defaultImg="#00ffffff" onClick="function.logInMove" />
+		</WINDOW>
+		<WINDOW id="backWindow" layout="0,0,720,1230" defaultImg="#80000000" visible="invisible" />
+		<WINDOW id="SignupPage" layout="0,-1230,720,1230" onClick="none">
+			<BUTTON layout="630,30,60,60" defaultImg="res/icon_tabs_decline_x.png" onClick="function.signUpMove" />
+			<STYLEBUTTON layout="30,172,660,400" shape="roundRect(10)" borderStyle="solid:2|#ffffff" defaultImg="#ffffff" align="linear:vertical">
+
+
+				<EDIT layout="600,100" text="" placeholder="Email Address" returnKeyType="next" onChange="" onReturnKey="" fontSize="30" textColor="#dfe0df" fontStyle="bold" textAlign="vCenter" defaultImg="#00000000"	margin="30,0,0,0" language="english" multiLine="false"/>
+				<WINDOW id="lineLabel" layout="600,2" defaultImg="#dfe0df" margin="30,0,0,0" />
+				<EDIT layout="600,100" text="" placeholder="Password" textFormat="textPassword" returnKeyType="next" onChange="" onReturnKey="" fontSize="30" textColor="#dfe0df" fontStyle="bold" textAlign="vCenter" defaultImg="#00000000" margin="30,0,0,0" language="english"  multiLine="false"/>
+				<WINDOW id="lineLabel" layout="600,2" defaultImg="#dfe0df" margin="30,0,0,0" />
+				<EDIT layout="600,100" text="" placeholder="First Name" returnKeyType="next" onChange="" onReturnKey="" fontSize="30" textColor="#dfe0df" fontStyle="bold" textAlign="vCenter" defaultImg="#00000000"	margin="30,0,0,0" language="english"  multiLine="false"/>
+				<WINDOW id="lineLabel" layout="600,2" defaultImg="#dfe0df" margin="30,0,0,0" />
+				<EDIT layout="600,100" text="" placeholder="Last Name" returnKeyType="done" onChange="" onReturnKey="" fontSize="30" textColor="#dfe0df" fontStyle="bold" textAlign="vCenter" defaultImg="#00000000"	margin="30,0,0,0" language="english"  multiLine="false"/>
+			</STYLEBUTTON>
+			<STYLEBUTTON layout="30,600,660,97" shape="roundRect(10)" text="Sign Up" fontFace="res/circular_book.otf" fontSize="40" textAlign="center" textColor="#ffffff" defaultImg="#f8b9bb"
+				onClick="device.toastPopup('Sign Up')" />
+		</WINDOW>
+
+		<WINDOW id="LoginPage" layout="0,-1230,720,1230" onClick="none">
+			<BUTTON layout="630,30,60,60" defaultImg="res/icon_tabs_decline_x.png" onClick="function.logInMove" />
+			<STYLEBUTTON layout="30,172,660,200" shape="roundRect(10)" borderStyle="solid:2|#ffffff" defaultImg="#ffffff" align="linear:vertical">
+				<EDIT layout="600,100" text="" placeholder="Email Address" returnKeyType="next" onChange="" onReturnKey="" fontSize="30" textColor="#dfe0df" fontStyle="bold" textAlign="vCenter" defaultImg="#00000000"	margin="30,0,0,0" language="english" multiLine="false"/>
+				<LABEL id="lineLabel" layout="600,2" defaultImg="#dfe0df" margin="30,0,0,0" />
+				<EDIT layout="600,100" text="" placeholder="Password" textFormat="textPassword" returnKeyType="done" onChange="" onReturnKey="" fontSize="30" textColor="#dfe0df" fontStyle="bold" textAlign="vCenter" defaultImg="#00000000" margin="30,0,0,0" language="english" multiLine="false" />
+			</STYLEBUTTON>
+			<STYLEBUTTON layout="30,400,660,97" shape="roundRect(10)" text="Log In" fontFace="res/circular_book.otf" fontSize="40" textAlign="center" textColor="#ffffff" defaultImg="#f8b9bb"
+				onClick="device.toastPopup('Log In')" />
+		</WINDOW>
+	</UILAYOUT>
+</MOML>
